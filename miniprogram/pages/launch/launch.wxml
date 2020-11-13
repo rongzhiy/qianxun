@@ -1,0 +1,6 @@
+<view class='container'>
+  <image  class='containert-img' src='{{imageUrl}}' mode='aspectFill'></image>
+  <view class='journey-container' bindtap='onBindTap'>
+    <text class='journey'>进入</text>
+  </view>
+</view>

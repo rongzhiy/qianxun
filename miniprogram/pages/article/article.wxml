@@ -1,0 +1,70 @@
+<view class="bg-white padding-lr">
+	<view class="padding-xs flex align-center">
+		<view class="flex-sub text-center">
+			<view class="solid-bottom text-xl padding">
+				<text class="text-black text-bold">{{title}}</text>
+			</view>
+			<view class="padding">
+				<text>作者：{{nickname}}</text>
+				<text class="margin-left">时间：{{time}}</text>
+			</view>
+		</view>
+	</view>
+	<!-- 图片 -->
+	<view class="cu-card case">
+		<view class="image">
+			<image src="{{image}}" mode="widthFix"></image>
+			<view class="cu-tag bg-blue">{{tag}}</view>
+		</view>
+	</view>
+
+	<!-- 内容 -->
+	<block wx:for="{{content}}" wx:key="cont">
+		<view class="cont">
+			{{item}}
+		</view>
+	</block>
+	<view class="text-gray text-sm text-right padding">
+		<text class="cuIcon-attentionfill margin-lr-xs"></text>{{view}}
+		<text class="cuIcon-appreciatefill margin-lr-xs"></text> {{zan}}
+		<text class="cuIcon-messagefill margin-lr-xs"></text> {{cnumber}}
+	</view>
+
+	<view class="cu-item text-blue cuIcon-creative">
+		<view class="content bg-cyan shadow-blur">
+			<view class="content  padding-left margin-top">
+				如果遇到问题，你可以
+				<button class="cu-btn " open-type="contact">
+					<text class="text-sm text-blue text-bold">联系我们</text>
+				</button>
+			</view>
+		</view>
+	</view>
+	<!-- 评论框 -->
+	<!-- <view class="cu-form-group margin-top solid{{size?'s':''}}">
+		<textarea maxlength="-1" disabled="{{disabled}}" bindinput="textareaAInput" placeholder="多行文本输入框"></textarea>
+	</view>
+	<view class="padding flex flex-direction">
+		<button class="cu-btn bg-blue margin-tb-sm lg " disabled="{{disabled}}">发表</button>
+	</view> -->
+
+	<!--评论-->
+	<!-- <block wx:if="{{comlength == 0}}">
+		<view class="text-center text-gray padding" style="margin:40rpx auto;">还没有评论</view>
+	</block> -->
+
+	<!-- <block wx:for="{{comment}}" wx:key="com" wx:if="{{comlength !==0 }}">
+		<view class="cu-list menu-avatar comment solids-top">
+			<view class="cu-item">
+				<view class="cu-avatar round" style="background-image:url(https://ossweb-img.qq.com/images/lol/img/champion/Morgana.png);"></view>
+				<view class="content">
+					<view class="text-grey">莫甘娜</view>
+					<view class="text-gray text-content text-df">
+						凯尔，你被自己的光芒变的盲目。
+					</view>
+				</view>
+			</view>
+		</view>
+	</block> -->
+
+</view>

@@ -1,0 +1,28 @@
+
+<view class="bg-white margin-top">
+    <view class=" padding margin-bt-sm">
+        <text class="text-bold text-xxl margin-tb-sm">1.接受条款</text>
+        <text class="text-left">
+            《千寻》由“千寻项目团队”开发，根据以下服务条款为您提供服务。“千寻项目团队”在此特别提醒您（用户）在注册成为用户之前，请认真阅读本《用户使用许可协议》（以下简称“本协议”），确保您充分理解本协议中各条款。除非您接受本协议所有条款，否则您无权注册、登录或使用本协议所涉服务。您的注册、登录、使用等行为将视为对本协议的接受，并同意接受本协议各项条款的约束。
+        </text>
+    </view>
+ 
+    <view class="padding margin-bt-sm">
+        <text class="text-bold text-xxl margin-tb-sm">2.一般条款</text>
+        <text class="text-left">
+            
+本使用协议及您与千寻之关系，均受到中华人民共和国法律管辖。您与千寻就本服务、本使用协议或其它有关事项发生的争议，应首先友好协商解决，协商不成时应提请武汉仲裁委员会仲裁，仲裁裁决是终局性的，对双方均有约束力；
+千寻未行使或执行本使用协议任何权利或规定，不构成对前述权利或权利之放弃；
+倘本使用协议之任何规定因与中华人民共和国法律抵触而无效，您依然同意应依照法律，努力使该规定所反映之当事人意向具备效力，且本使用协议其它规定仍应具有完整的效力。
+本使用协议之标题仅供方便而设，不具有任何法律或契约效果
+        </text>
+    </view>
+
+    <view class="padding margin-bt-sm">
+        <text class="text-bold text-xxl margin-tb-sm">3.其他</text>
+        <text class="text-left">
+            关于**
+        </text>
+    </view>
+    
+</view>

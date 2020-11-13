@@ -1,0 +1,82 @@
+
+<view class="cu-chat">
+ <view  class="cu-info">
+    你已联系成功，并和他(她)是好友了，赶快开始聊天了。
+  </view>
+
+  <view class="cu-item self">
+    <view class="main">
+      <view class="content bg-green shadow">
+        <text>嗨 ，你是不是丢身份证啦？</text>
+      </view>
+    </view>
+    <view class="cu-avatar radius" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big107000.jpg);"></view>
+    <view class="date">2018年3月23日 13:23</view>
+  </view>
+
+  <view class="cu-item">
+    <view class="cu-avatar radius" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big143004.jpg);"></view>
+    <view class="main">
+      <view class="content shadow">
+        <text>喵喵喵~，是呢，朋友你好，请问你在哪里捡到的？卡现在在你手里吗？</text>
+      </view>
+    </view>
+    <view class="date "> 13:23</view>
+  </view>
+   <view class="cu-info round">我撤回一条消息!</view>
+ 
+  <view class="cu-item self">
+    <view class="main">
+      <image src="cloud://xly-zjauh.786c-xly-zjauh-1301501296/ocr/idcard.jpg" class="radius" mode="widthFix"></image>
+    </view>
+    <view class="cu-avatar radius" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big107000.jpg);"></view>
+    <view class="date"> 13:23</view>
+  </view>
+  <view class="cu-item self">
+    <view class="main">
+      <view class="action text-bold text-grey">
+        3"
+      </view>
+      <view class="content shadow">
+        <text class="cuIcon-sound text-xxl padding-right-xl"> </text>
+      </view>
+    </view>
+    <view class="cu-avatar radius" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big107000.jpg);"></view>
+    <view class="date">13:23</view>
+  </view>
+  <view class="cu-item self">
+    <view class="main">
+      <view class="action">
+        <text class="cuIcon-locationfill text-orange text-xxl"></text>
+      </view>
+      <view class="content shadow">
+        我现在就在这，你现在过来拿吧
+      </view>
+    </view>
+    <view class="cu-avatar radius" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big107000.jpg);"></view>
+    <view class="date">13:23</view>
+  </view>
+  <view class="cu-item">
+    <view class="cu-avatar radius" style="background-image:url(https://ossweb-img.qq.com/images/lol/web201310/skin/big143004.jpg);"></view>
+    <view class="main">
+      <view class="content shadow">
+       好呢，麻烦你等一下，我马上来取
+      </view>      
+      <view class="action text-grey">
+        <text class="cuIcon-warnfill text-red text-xxl"></text> <text class="text-sm margin-left-sm">请检查网络设置</text> 
+      </view>
+    </view>
+    <view class="date">13:23</view>
+  </view>
+</view>
+
+<view class="cu-bar foot input {{InputBottom!=0?'cur':''}}" style="bottom:{{InputBottom}}px">
+  <view class="action">
+    <text class="cuIcon-sound text-grey"></text>
+  </view>
+  <input class="solid-bottom" bindfocus="InputFocus" bindblur="InputBlur" adjust-position="{{false}}" focus="{{false}}" maxlength="300" cursor-spacing="10"></input>
+  <view class="action">
+    <text class="cuIcon-emojifill text-grey"></text>
+  </view>
+  <button class="cu-btn bg-green shadow">发送</button>
+</view>

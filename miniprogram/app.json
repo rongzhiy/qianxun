@@ -1,0 +1,76 @@
+{
+  "pages": [
+    "pages/launch/launch",
+    "pages/main/main",
+    "pages/list/list",
+    "pages/xun/xun",
+    "pages/pai/pai",
+    "pages/pai/idcard/idcard",
+    "pages/pai/bankcard/bankcard",
+    "pages/pai/carcard/carcard",
+    "pages/pai/studentcard/studentcard",
+    "pages/message/message",
+    "pages/chatroom/chatroom",
+    "pages/chat_list/chat_list",
+    "pages/article/article",
+    "pages/personal/personal",
+    "pages/personal/form/form",
+    "pages/personal/record/record",
+    "pages/personal/write/write",
+    "pages/personal/chat/chat",
+    "pages/personal/search/search",
+    "pages/personal/about/about",
+    "pages/personal/userAgreement/userAgreement",
+    "components/navbar/navbar",
+    "components/grid/grid"
+  
+    
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "千寻",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh":true,
+    "onReachBottomDistance":50
+  },
+  "tabBar": {
+    "color":"#cdcdcd",
+    "selectedColor": "#1296db",
+    "list": [
+      {
+        "pagePath": "pages/main/main",
+        "text":"发现",
+        "iconPath": "image/tab/shouye.png",
+        "selectedIconPath": "image/tab/shouyeactive.png"
+      },
+      {
+        "pagePath": "pages/pai/pai",
+        "text":"拍一拍",
+        "iconPath": "image/tab/photo.png",
+        "selectedIconPath": "image/tab/photoactive.png"
+      },
+      {
+        "pagePath": "pages/message/message",
+        "text":"消息",
+        "iconPath": "image/tab/massage.png",
+        "selectedIconPath": "image/tab/massageactive.png"
+      },
+      {
+        "pagePath": "pages/personal/personal",
+        "text":"个人中心",
+        "iconPath": "image/tab/personal.png",
+        "selectedIconPath": "image/tab/personalactive.png"
+      }
+    ]
+  },
+  "plugins": {
+    "ocr-plugin": {
+      "version": "3.0.6",
+      "provider": "wx4418e3e031e551be"
+    }
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}

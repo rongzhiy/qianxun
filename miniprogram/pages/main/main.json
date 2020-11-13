@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "swiper":"../../components/swiper/swiper",
+    "navbar":"../../components/navbar/navbar",
+    "grid" :"../../components/grid/grid"
+  }
+}
