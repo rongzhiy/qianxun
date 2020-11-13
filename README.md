@@ -54,7 +54,7 @@
 
 - 上传云函数![image-20201113233304755](https://20201004-1259638372.cos.ap-nanjing.myqcloud.com/image-20201113233304755.png)至自己的云开发环境中
 
-- https://developers.weixin.qq.com/community/servicemarket/detail/0006eeb6160ce8429fb8cd3995b815购买ocr插件。
+- [购买ocr插件](https://developers.weixin.qq.com/community/servicemarket/detail/0006eeb6160ce8429fb8cd3995b815)
 
 - 编译运行即可。
 
@@ -84,30 +84,29 @@ miniprogram
 
 - pages 
 
-  - article
-  - chat_list
-  - chatroom
-  - launch
-  - list
-  - main
-  - message
-  - pai
-    - bankcard
-    - carcard
-    - idcard
-    - idcard
-    - studentcard
-  - personal
-    - about
-    - chat
-    - form
-    - record
-    - search
-    - userAgreement
-    - write
-  - xun
+  - article   写文章的文件夹
+  - chat_list   聊天列表文件夹
+  - chatroom  聊天室文件夹
+  - launch   启动页文件夹
+  - list   文章列表文件夹
+  - main   主页文件夹
+  - message  消息文件夹（暂没用）
+  - pai   拍一拍页
+    - bankcard  识别银行卡页
+    - carcard  识别驾驶证页
+    - idcard    识别身份证页
+    - studentcard  识别学生证页
+  - personal  个人中心页
+    - about  项目说明页
+    - chat  （暂没用）
+    - form   收集表单页
+    - record  密码本页
+    - search  （暂没用）
+    - userAgreement  用户协议页
+    - write  记录密码页
+  - xun  （暂没用）
 
-- utils
+- utils 
 
 - app.js
 
@@ -115,7 +114,7 @@ miniprogram
 
 - app.wxss
 
-- sitemap.json
+- sitemap.json 
 
   
 
