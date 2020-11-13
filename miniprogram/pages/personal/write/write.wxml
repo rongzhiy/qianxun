@@ -1,6 +1,0 @@
-<view class="cu-form-group margin-top">
-	<textarea maxlength="200" bindinput="textareaInput" placeholder="想写啥就写啥，反正自己看"></textarea>
-</view>
-<view class="padding flex flex-direction">
-<button class="cu-btu bg-blue margin-tb-sm lg" disabled="{{disabled}}" bindtap="getvalue">保存</button>
-</view>

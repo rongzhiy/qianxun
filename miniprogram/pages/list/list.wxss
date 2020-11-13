@@ -1,5 +1,0 @@
-/* pages/list/list.wxss */
-navigator {
-   font-size: medium;
-   line-height: 30px;
-}

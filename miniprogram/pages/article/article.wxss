@@ -1,8 +1,0 @@
-.cont{
-  margin-top:20rpx;
-  line-height:1.5em;
-  letter-spacing: 2rpx;
-  text-indent : 2em;
-  text-align: justify;
-
-}
