@@ -1,0 +1,232 @@
+{
+  "miniprogramRoot": "miniprogram/",
+  "cloudfunctionRoot": "cloudfunctions/",
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "preloadBackgroundData": false,
+    "minified": true,
+    "newFeature": true,
+    "coverView": true,
+    "nodeModules": true,
+    "autoAudits": false,
+    "showShadowRootInWxmlPanel": true,
+    "scopeDataCheck": false,
+    "uglifyFileName": false,
+    "checkInvalidKey": true,
+    "checkSiteMap": false,
+    "uploadWithSourceMap": true,
+    "compileHotReLoad": false,
+    "useMultiFrameRuntime": false,
+    "useApiHook": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "enableEngineNative": false,
+    "useIsolateContext": true,
+    "useCompilerModule": true,
+    "userConfirmedUseCompilerModuleSwitch": false,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true
+  },
+  "appid": "wx7e724d541e6e0878",
+  "projectname": "qianxun3.0",
+  "libVersion": "2.14.0",
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
+  "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "主页",
+          "pathName": "pages/main/main",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 1,
+          "name": "pages/personal/personal",
+          "pathName": "pages/personal/personal",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/article/article",
+          "pathName": "pages/article/article",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/article/article",
+          "pathName": "pages/article/article",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/personal/record/record",
+          "pathName": "pages/personal/record/record",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/personal/write/write",
+          "pathName": "pages/personal/write/write",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/personal/record/record",
+          "pathName": "pages/personal/record/record",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/list/list",
+          "pathName": "pages/list/list",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/photo/photo",
+          "pathName": "pages/photo/photo",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/regex/regex",
+          "pathName": "pages/regex/regex",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/xun/xun",
+          "pathName": "pages/xun/xun",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/personal/chat/chat",
+          "pathName": "pages/personal/chat/chat",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/personal/search/search",
+          "pathName": "pages/personal/search/search",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/personal/form/form",
+          "pathName": "pages/personal/form/form",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/personal/about/about",
+          "pathName": "pages/personal/about/about",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "首页",
+          "pathName": "pages/main/main",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pai",
+          "pathName": "pages/pai/pai",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "表单",
+          "pathName": "pages/personal/form/form",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "密码本",
+          "pathName": "pages/personal/record/record",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "身份证",
+          "pathName": "pages/pai/idcard/idcard",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "个人主页",
+          "pathName": "pages/personal/personal",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pai",
+          "pathName": "pages/pai/pai",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "身份证",
+          "pathName": "pages/pai/idcard/idcard",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "银行卡",
+          "pathName": "pages/pai/bankcard/bankcard",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "驾驶证",
+          "pathName": "pages/pai/carcard/carcard",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "学生卡",
+          "pathName": "pages/pai/studentcard/studentcard",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/list/list",
+          "pathName": "pages/list/list",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

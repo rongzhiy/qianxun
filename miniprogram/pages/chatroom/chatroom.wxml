@@ -1,0 +1,42 @@
+<view class="chatroom">
+
+	<!-- 聊天记录 -->
+	<scroll-view scroll-y class="body">
+		<view wx:for="{{chats}}" wx:key="{{item._id}}" class="message {{openId == item._openid ? 'message__self' : ''}}">
+			<!-- <block
+				wx:if="{{(item._openid == openId && item.receiveId == receiveId) || (item._openid == receiveId && item.receiveId == openId)}}"> -->
+				<image class="avatar" src="{{item.avatar}}" mode="scaleToFill"></image>
+				<view class="main">
+					<view class="nickname">{{item.nickName}} {{item.sendTime}}</view>
+					<view class="text-wrapper">
+						<view class="text-content">{{item.textContent}}</view>
+					</view>
+				</view>
+			<!-- </block> -->
+
+		</view>
+	</scroll-view>
+
+
+	<!-- <view class="footer bg-white">
+		<view class="message-sender" wx:if="{{userInfo}}">
+			<input class="text-input" placeholder="请输入" value="{{textInputValue}}" bindinput="onTextInput"></input>
+			<button class="send-btn" bindtap="onSend">发送</button>
+		</view>
+	</view> -->
+
+	<view class="_div data-v-afeb3abc bottom" style="padding-bottom:;">
+		<view class="_div data-v-afeb3abc bottom-div">
+			<view style="width: 100%" class="_div data-v-afeb3abc">
+				<input type="text" class="_input data-v-afeb3abc input" value="{{textInputValue}}" bindinput="onTextInput"
+					confirm-type="send" cursor-spacing="10" />
+			</view>
+			<view class="_div data-v-afeb3abc send" bindtap="onSend">
+				发送
+			</view>
+		</view>
+	</view>
+
+
+
+</view>

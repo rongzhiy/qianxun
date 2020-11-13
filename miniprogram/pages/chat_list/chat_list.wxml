@@ -1,0 +1,21 @@
+<!--miniprogram/pages/list/list.wxml-->
+<view class="uploader" >
+	<scroll-view scroll-y>
+		<block wx:if="{{userList.length != 0}}" >
+			<view wx:for="{{userList}}" wx:key="{{item._id}}" class="userlist">
+				<block wx:if="{{item._openid != myId}}">
+					<navigator url="../chatroom/chatroom?getopenid={{item._openid}}&getnickname={{item.nickName}}"
+						open-type="navigate" class="uploader-text">
+						<image class="avatar" src="{{item.avatarUrl}}" mode="scaleToFill"></image>
+						<text>{{item.nickName}}</text>
+					</navigator>
+				</block>
+			</view>
+		</block>
+		<block wx:else>
+			<view class="fix-bottom text-center full margin-top">
+				<view class="cu-btn text-sm text-lg">暂未找到用户哦~</view>
+			</view>
+		</block>
+	</scroll-view>
+</view>

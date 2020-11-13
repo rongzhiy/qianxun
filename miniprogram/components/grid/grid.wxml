@@ -1,0 +1,15 @@
+<view class="cu-bar bg-white solid-bottom margin-top">
+    <!-- <view class="action">
+      <text class="cuIcon-title text-orange "></text> 失物分类
+    </view> -->
+  </view>
+  <view class="cu-list grid col-{{gridCol}}">
+    <view class="cu-item" wx:for="{{iconList}}" wx:key="grid" wx:if="{{index<gridCol*3}}">
+
+    <navigator url="../list/list?name={{item.name}}" hover-class="none">
+      <image src="{{item.image}}" style ="width:60rpx; height:60rpx;"> </image>
+      <text>{{item.name}}</text> 
+    </navigator>
+    </view>
+  
+  </view>
