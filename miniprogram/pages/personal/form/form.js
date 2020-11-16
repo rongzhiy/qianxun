@@ -20,7 +20,7 @@ Page({
     
   },
   PickerChange(e) {
-    // console.log(e);
+    console.log(e);
     this.setData({ 
       index: e.detail.value,   
     })
@@ -31,7 +31,7 @@ Page({
     this.setData({
       region: e.detail.value
     }) 
-    // console.log(this.data.region);
+    console.log(this.data.region);
   },
 
   textareaInput(e) {
@@ -43,7 +43,14 @@ Page({
   formSubmit: function(e){
     console.log('form发生了submit事件，携带数据为：', e.detail.value);
     let {bankcard,beizhu,idcard,name,phonenumber,qqhao,weixinhao,xuehao}=e.detail.value;
-    
+    if(name == ''||phonenumber==''){
+       wx.showToast({
+         title: '请至少填写姓名和电话号码',
+         icon:'none',
+         duration:2000
+       })
+    }else{
+
       baseinfoCollection.add({
         data:{
           name:name,
@@ -55,7 +62,8 @@ Page({
           xuehao:xuehao,
           beizhu:beizhu,
           daxue:this.data.picker[this.data.index],
-          address:this.data.region
+          address:this.data.region,
+          time: new Date()
         }
       }).then(res=>{
       wx.showToast({
@@ -64,9 +72,34 @@ Page({
       })
       })
 
-    
-    
+    };
+         
   },
+ 
+  onPullDownRefresh: function () {
+    // console.log('这是下拉刷新控制台输出的内容：其实就是跟查询数据库内容一样的功能，后期完善');
+    this.onLoad();
+    wx.stopPullDownRefresh()
+    console.log('刷新成功')
+    wx.showToast({
+      title: '刷新成功',
+      icon:'none'
+    })
+},
 
+ /**
+   * 用户点击右上角分享
+   */
+  onShareAppMessage:function(res){
+    return {title:'云大千寻小程序'}
+  },
+  /**
+   * 用户点击右上角分享到朋友圈
+   */
+  onShareTimeline:function(res){
+    return{
+      title:'云大千寻',
+    }
+  }
   
 })

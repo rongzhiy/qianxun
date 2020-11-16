@@ -45,7 +45,7 @@
          <view>
             <navigator url="../chat_list/chat_list?founder={{item._openid}}">
                <view class="padding margin">
-                  身份证号为：<view class="shadow-blur bg-orange Box">
+                  <view class="shadow-blur bg-orange Box" style="animation: show 1s 1;-webkit-animation: show 1s 1;">身份证号为：
                      <view class="text-blue">{{item.idcardId}}</view>失主： {{item.idcardName}}，请联系我哦~
                   </view>
                </view>

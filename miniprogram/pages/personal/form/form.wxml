@@ -2,7 +2,7 @@
 	<!-- 基本信息 -->
 	<view class="cu-form-group">
 		<view class="title">我的姓名：</view>
-		<input name="name" placeholder="如：杨荣智"></input>
+		<input name="name" placeholder="如：杨泽"></input>
 	</view>
 	<view class="cu-form-group">
 		<view class="title">我的微信号：</view>

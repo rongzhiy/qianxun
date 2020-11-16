@@ -82,9 +82,9 @@
             </view>
             <view class="title">联系方式</view>
             <view class="description">
-                  <view class="tip" bindtap="copy" data-copy="https://gitee.com/aze9420/qianxun" data-name="链接">
-                        <view>码云</view>:
-                        <text class="text-lg">https://gitee.com/aze9420/qianxun</text>
+                  <view class="tip" bindtap="copy" data-copy="2735545128@qq.com" data-name="链接">
+                        <view>邮箱：</view>:
+                        <text class="text-lg">2735545128@qq.com</text>
                   </view>
                   <view class="tip" bindtap="copy" data-copy="aze2735" data-name="微信">
                         <view>Wechat</view>:

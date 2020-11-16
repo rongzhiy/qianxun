@@ -12,7 +12,8 @@ Page({
    data: {
       userList: [],
       myId: '',
-      msgList: []
+      msgList: [],
+      mesLength:0,
    },
 
 
@@ -74,7 +75,7 @@ Page({
       // }
       // arraypro.sort((x, y) => x.sendTimeTs - y.sendTimeTs)
       // console.log('arrpro', arraypro)
-
+      let that=this
       var arraypro = []
       await wx.cloud.callFunction({
          name: 'getchats',
@@ -83,8 +84,11 @@ Page({
          }
       })
       .then (res => {
-         console.log("getchats", res)
+         console.log("getchats条数", res.result.data.length)
          arraypro = res.result.data
+         that.setData({
+            mesLength:res.result.data.length
+         })
       })
       arraypro.sort((x, y) => x.sendTimeTs - y.sendTimeTs)
       console.log('arrpro', arraypro)
@@ -193,19 +197,26 @@ Page({
       // console.log('pullDown', app.globalData)
       console.log('pullDownstorage', wx.getStorageSync('userInfo'))
       this.hanleListInfo(wx.getStorageSync('openid'))
+      wx.stopPullDownRefresh()
+      wx.showToast({
+        title: '刷新成功',
+        icon:'none'
+      })
    },
 
-   /**
-    * 页面上拉触底事件的处理函数
-    */
-   onReachBottom: function () {
-
-   },
-
-   /**
-    * 用户点击右上角分享
-    */
-   onShareAppMessage: function () {
-
+/**
+  * 用户点击右上角分享
+  */
+ onShareAppMessage:function(res){
+   return {title:'云大千寻小程序'}
+ },
+ /**
+  * 用户点击右上角分享到朋友圈
+  */
+ onShareTimeline:function(res){
+   return{
+     title:'云大千寻',
    }
+ }
+
 })
