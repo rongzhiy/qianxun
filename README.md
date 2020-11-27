@@ -108,7 +108,11 @@
 
 - 上传云函数![image-20201113233304755](https://20201004-1259638372.cos.ap-nanjing.myqcloud.com/image-20201113233304755.png)至自己的云开发环境中
 
-- [购买ocr插件](https://developers.weixin.qq.com/community/servicemarket/detail/0006eeb6160ce8429fb8cd3995b815)
+- [购买ocr插件](https://developers.weixin.qq.com/community/servicemarket/detail/0006eeb6160ce8429fb8cd3995b815)（目前弃用）以及[百度OCR API](https://cloud.baidu.com/)
+
+- 项目配置
+
+  ![image-20201127232528276](https://20201004-1259638372.cos.ap-nanjing.myqcloud.com/image-20201127232528276.png)![image-20201127232547217](https://20201004-1259638372.cos.ap-nanjing.myqcloud.com/image-20201127232547217.png)
 
 - 编译运行即可。
 
