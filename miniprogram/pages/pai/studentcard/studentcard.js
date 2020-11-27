@@ -38,17 +38,17 @@ Page({
           title: '识别中'
         });
         this.uplaodF(tempFilePaths);
-        setTimeout(function () {
-          wx.hideLoading({
-            success: (res) => {
-              wx.showToast({
-                title: '识别失败或信息不准确，请手动输入',
-                icon: 'none'
-              })
-              return
-            },
-          });
-        }, 10000);
+        // setTimeout(function () {
+        //   wx.hideLoading({
+        //     success: (res) => {
+        //       wx.showToast({
+        //         title: '若识别失败或信息不准确，请手动输入',
+        //         icon: 'none'
+        //       })
+        //       return
+        //     },
+        //   });
+        // }, 15000);
       }
     });
   },
@@ -104,40 +104,27 @@ Page({
           // this.setData({
           //   words_result: arr
           // })
-          that.setData({
-            studentcardName: res.result.words_result[2].words.slice(3),
-            studentcardXueyuan: res.result.words_result[3].words.slice(3),
-            studentcardID: res.result.words_result[4].words.slice(3),
-          })
-          wx.hideLoading();
-          wx.showToast({
-            title: '识别成功',
-            icon: 'success',
-            duration: 2000
-          })
+          try {
+            that.setData({
+              studentcardName: res.result.words_result[2].words.slice(3),
+              studentcardXueyuan: res.result.words_result[3].words.slice(3),
+              studentcardID: res.result.words_result[4].words.slice(3),
+            })
+            wx.hideLoading();
+            wx.showToast({
+              title: '成功,可修改！',
+              icon: 'success',
+              duration: 2000
+            })
+          } catch (error) {
+            wx.hideLoading();
+            wx.showToast({
+              title: '识别失败,需手动输入',
+              icon: 'none',
+              duration: 2000
+            })
+          }
 
-          //把识别记录添加到数据库found中
-          foundCollection.where({
-            _openid: wx.getStorageSync('openid'),
-            studentcardID: that.data.studentcardID
-          }).get().then(res2 => {
-            if (res2.data == '') {
-              foundCollection.add({
-                data: {
-                  time: new Date(),
-                  tag: 'studentcard',
-                  studentcardName: res.result.words_result[2].words.slice(3),
-                  studentcardXueyuan: res.result.words_result[3].words.slice(3),
-                  studentcardID: res.result.words_result[4].words.slice(3)
-                }
-              }).then(res => {
-                console.log('添加成功')
-
-              })
-            } else {
-              console.log('存在')
-            }
-          })
         } else { //未识别出结果
           this.setData({
             words_result: ''
@@ -148,7 +135,7 @@ Page({
             icon: 'none'
           })
         }
-        
+
         //删除图片
         wx.cloud.deleteFile({
           fileList: [id]
@@ -211,43 +198,53 @@ Page({
           //  let that = this
           console.log('getimg res', res)
           wx.hideLoading()
-          that.setData({
-            studentcardName: res.data.words_result[2].words.slice(3),
-            studentcardXueyuan: res.data.words_result[3].words.slice(3),
-            studentcardID: res.data.words_result[4].words.slice(3),
-          })
+          try {
+            that.setData({
+              studentcardName: res.data.words_result[2].words.slice(3),
+              studentcardXueyuan: res.data.words_result[3].words.slice(3),
+              studentcardID: res.data.words_result[4].words.slice(3),
+            })
 
-          //把识别记录添加到数据库found中
-          foundCollection.where({
-            _openid: wx.getStorageSync('openid'),
-            studentcardID: that.data.studentcardID
-          }).get().then(res2 => {
-            if (res2.data == '') {
-              foundCollection.add({
-                data: {
-                  time: new Date(),
-                  tag: 'studentcard',
-                  studentcardName: res.data.words_result[2].words.slice(3),
-                  studentcardXueyuan: res.data.words_result[3].words.slice(3),
-                  studentcardID: res.data.words_result[4].words.slice(3)
-                }
-              }).then(res => {
-                console.log('添加成功')
+            wx.showToast({
+              title: '识别成功',
+              icon: 'success',
+              duration: 2000
+            })
 
-              })
-            } else {
-              console.log('存在')
-            }
-          })
-          setTimeout(function () {
-            wx.hideLoading()
-          }, 1000)
+          } catch (error) {
+            wx.showToast({
+              title: '识别失败,需手动输入',
+              icon: 'none',
+              duration: 2000
+            })
+          }
 
-          wx.showToast({
-            title: '识别成功',
-            icon: 'success',
-            duration: 2000
-          })
+          // //把识别记录添加到数据库found中
+          // foundCollection.where({
+          //   _openid: wx.getStorageSync('openid'),
+          //   studentcardID: that.data.studentcardID
+          // }).get().then(res2 => {
+          //   if (res2.data == '') {
+          //     foundCollection.add({
+          //       data: {
+          //         time: new Date(),
+          //         tag: 'studentcard',
+          //         studentcardName: res.data.words_result[2].words.slice(3),
+          //         studentcardXueyuan: res.data.words_result[3].words.slice(3),
+          //         studentcardID: res.data.words_result[4].words.slice(3)
+          //       }
+          //     }).then(res => {
+          //       console.log('添加成功')
+
+          //     })
+          //   } else {
+          //     console.log('存在')
+          //   }
+          // })
+          // setTimeout(function () {
+          //   wx.hideLoading()
+          // }, 1000)
+
 
           //把识别记录添加到数据库found中
           //  foundCollection.where({
@@ -454,9 +451,33 @@ Page({
     //     duration: 2000
     //   })
     // }
+    let that = this
     var stuid = e.detail.value.studentcardID
     if (e.detail.value.studentcardXueyuan && e.detail.value.studentcardName) {
       if (stuid.length >= 5 && /^[0-9]*$/.test(stuid)) {
+        //把识别记录添加到数据库found中
+        foundCollection.where({
+          _openid: wx.getStorageSync('openid'),
+          studentcardID: that.data.studentcardID
+        }).get().then(res2 => {
+          if (res2.data == '') {
+            foundCollection.add({
+              data: {
+                time: new Date(),
+                tag: 'studentcard',
+                studentcardName: e.detail.value.studentcardName,
+                studentcardXueyuan: e.detail.value.studentcardXueyuan,
+                studentcardID: e.detail.value.studentcardID
+              }
+            }).then(res => {
+              console.log('添加成功')
+
+            })
+          } else {
+            console.log('存在')
+          }
+        })
+
         wx.navigateTo({
           url: '../../chat_list/chat_list?stuid=' + stuid,
         })

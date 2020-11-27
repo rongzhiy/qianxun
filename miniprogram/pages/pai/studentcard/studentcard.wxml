@@ -5,7 +5,7 @@
     </view>
   </view>
 </view>
-
+ 
 <view class="imagesize">
   <image src='{{bigImg}}' bindtap="xaingce" class="png" mode="widthFix"></image>
 </view>
@@ -23,7 +23,9 @@
     <view class="title">学号：</view>
     <input name="studentcardID" value="{{studentcardID}}"/>
   </view>
-
+  <view class="fix-bottom text-center full margin-top">
+                  <button class="cu-btn text-sm" >识别若有错误，请手动修改</button>
+            </view>
   <view class="padding flex flex-direction">
     <button formType="submit" class="cu-btn bg-blue margin-tb-sm lg">查找失主</button>
   </view>

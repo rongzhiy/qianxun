@@ -134,9 +134,14 @@
 
 - 小程序使用了[colorUI组件](https://github.com/weilanwl/ColorUI)和[OCR插件](https://developers.weixin.qq.com/community/servicemarket/detail/0006eeb6160ce8429fb8cd3995b815)以及[百度OCR API](https://cloud.baidu.com/)
 
-  
 
-## 五、目录结构说明
+## 五、演示视频
+
+
+
+
+
+## 六、目录结构说明
 
 miniprogram
 
