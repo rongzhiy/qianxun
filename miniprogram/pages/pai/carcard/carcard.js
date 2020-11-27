@@ -15,6 +15,152 @@ Page({
     bigImg: 'https://786c-xly-zjauh-1301501296.tcb.qcloud.la/ocr/cardemo.jpg?sign=fa10ebd14b199b3959342bc4473a337c&t=1604719812'
   },
 
+  xaingce(e) { //相册响应函数
+    let tempFiles;
+    let tempFilePaths;
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['compressed'],
+      sourceType: ['album', 'camera'],
+      success: res => {
+        // tempFilePath可以作为img标签的src属性显示图片
+        tempFiles = res.tempFiles[0].size;
+        tempFilePaths = res.tempFilePaths[0];
+        // if (tempFiles > 3000000) {//大于3m
+        //   wx.showToast({
+        //     title: '图片大小大于3M',
+        //     icon: 'none',
+        //     duration: 2000
+        //   });
+        //   return;
+        // }
+        wx.showLoading({
+          title: '识别中'
+        });
+        this.uplaodF(tempFilePaths);
+        // setTimeout(function () {
+        //   wx.hideLoading();
+        // }, 3000);
+      }
+    });
+  },
+  camera() { //相机响应函数
+    let ctx = wx.createCameraContext();
+    ctx.takePhoto({
+      quality: "normal",
+      success: (res) => {
+        let tempFilePaths = res.tempImagePath;
+        this.setData({
+          camera: false
+        });
+        // wx.showLoading({
+        //   title: '识别中'
+        // });
+        this.uplaodF(tempFilePaths);
+        // setTimeout(function () {
+        //   wx.hideLoading();
+        // }, 3000);
+      }
+    });
+  },
+  uplaodF(path) {
+    let result = false;
+    let that = this;
+    let name = path.substring(path.lastIndexOf('/') + 1, path.lastIndexOf('.'));
+    wx.cloud.uploadFile({
+      cloudPath: name,
+      filePath: path, // 文件路径
+    }).then(res => {
+      // get resource ID
+      let id = res.fileID;
+
+      // wx.showLoading({
+      //   title: '识别中'
+      // });
+      //调用云函数识别图片
+      wx.cloud.callFunction({
+        name: 'baiduOcr',
+        data: {
+          fileID: id,
+          carnum: 1
+        }
+      }).then(res => {
+        console.log("日志", res)
+        let result = res.result.words_result;
+        if (result) {
+          let arr = '';
+          for (let i = 0; i < result.length; i++) {
+            arr += result[i].words
+          }
+          console.log('arr', arr)
+          // this.setData({
+          //   words_result: arr
+          // })
+          that.setData({
+            carcardName: res.result.words_result.姓名.words,
+            carcardId: res.result.words_result.证号.words,
+            carcardAddr: res.result.words_result.住址.words,
+            carcardBirth: res.result.words_result.出生日期.words,
+            carcardType: res.result.words_result.准驾车型.words
+          })
+          wx.hideLoading();
+          wx.showToast({
+            title: '识别成功',
+            icon: 'success',
+            duration: 2000
+          })
+
+          //把识别记录添加到数据库found中
+          carcardCollection.where({
+            _openid: wx.getStorageSync('openid'),
+            carcardId: that.data.carcardId
+          }).get().then(res => {
+            if (res.data == '') {
+              carcardCollection.add({
+                data: {
+                  time: new Date(),
+                  tag: 'carcard',
+                  carcardAddr: that.data.carcardAddr,
+                  carcardId: that.data.carcardId,
+                  carcardName: that.data.carcardName,
+                  carcardBirth: that.data.carcardBirth,
+                  carcardType: that.data.carcardType
+                }
+              }).then(res => {
+                console.log('添加成功')
+              })
+            } else {
+              console.log('存在')
+            }
+          })
+          
+        } else { //未识别出结果
+          this.setData({
+            words_result: ''
+          })
+          wx.hideLoading();
+          wx.showToast({
+            title: '识别失败，可手动输入',
+            icon: 'none'
+          })
+        }
+        
+        //删除图片
+        wx.cloud.deleteFile({
+          fileList: [id]
+        }).then(res => {
+          // handle success
+        }).catch(error => {
+          // handle error
+        })
+      }).catch(err => {
+        console.log(err)
+      });
+    }).catch(error => {
+
+    });
+  },
+
   picToTxt() {
     let that = this
     wx.chooseImage({

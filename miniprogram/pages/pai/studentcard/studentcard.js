@@ -15,6 +15,156 @@ Page({
     bigImg: 'https://786c-xly-zjauh-1301501296.tcb.qcloud.la/ocr/studentcarddemo.png?sign=6bfeb5790db45100165ca3d389aa4d70&t=1604993904'
   },
 
+  xaingce(e) { //相册响应函数
+    let tempFiles;
+    let tempFilePaths;
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['compressed'],
+      sourceType: ['album', 'camera'],
+      success: res => {
+        // tempFilePath可以作为img标签的src属性显示图片
+        tempFiles = res.tempFiles[0].size;
+        tempFilePaths = res.tempFilePaths[0];
+        // if (tempFiles > 3000000) {//大于3m
+        //   wx.showToast({
+        //     title: '图片大小大于3M',
+        //     icon: 'none',
+        //     duration: 2000
+        //   });
+        //   return;
+        // }
+        wx.showLoading({
+          title: '识别中'
+        });
+        this.uplaodF(tempFilePaths);
+        setTimeout(function () {
+          wx.hideLoading({
+            success: (res) => {
+              wx.showToast({
+                title: '识别失败或信息不准确，请手动输入',
+                icon: 'none'
+              })
+              return
+            },
+          });
+        }, 10000);
+      }
+    });
+  },
+  camera() { //相机响应函数
+    let ctx = wx.createCameraContext();
+    ctx.takePhoto({
+      quality: "normal",
+      success: (res) => {
+        let tempFilePaths = res.tempImagePath;
+        this.setData({
+          camera: false
+        });
+        // wx.showLoading({
+        //   title: '识别中'
+        // });
+        this.uplaodF(tempFilePaths);
+        // setTimeout(function () {
+        //   wx.hideLoading();
+        // }, 12000);
+      }
+    });
+  },
+  uplaodF(path) {
+    let result = false;
+    let that = this;
+    let name = path.substring(path.lastIndexOf('/') + 1, path.lastIndexOf('.'));
+    wx.cloud.uploadFile({
+      cloudPath: name,
+      filePath: path, // 文件路径
+    }).then(res => {
+      // get resource ID
+      let id = res.fileID;
+
+      // wx.showLoading({
+      //   title: '识别中'
+      // });
+      //调用云函数识别图片
+      wx.cloud.callFunction({
+        name: 'baiduOcr',
+        data: {
+          fileID: id,
+          stunum: 1
+        }
+      }).then(res => {
+        console.log("日志", res)
+        let result = res.result.words_result;
+        if (result.length > 0) {
+          let arr = '';
+          for (let i = 0; i < result.length; i++) {
+            arr += result[i].words
+          }
+          console.log('arr', arr)
+          // this.setData({
+          //   words_result: arr
+          // })
+          that.setData({
+            studentcardName: res.result.words_result[2].words.slice(3),
+            studentcardXueyuan: res.result.words_result[3].words.slice(3),
+            studentcardID: res.result.words_result[4].words.slice(3),
+          })
+          wx.hideLoading();
+          wx.showToast({
+            title: '识别成功',
+            icon: 'success',
+            duration: 2000
+          })
+
+          //把识别记录添加到数据库found中
+          foundCollection.where({
+            _openid: wx.getStorageSync('openid'),
+            studentcardID: that.data.studentcardID
+          }).get().then(res2 => {
+            if (res2.data == '') {
+              foundCollection.add({
+                data: {
+                  time: new Date(),
+                  tag: 'studentcard',
+                  studentcardName: res.result.words_result[2].words.slice(3),
+                  studentcardXueyuan: res.result.words_result[3].words.slice(3),
+                  studentcardID: res.result.words_result[4].words.slice(3)
+                }
+              }).then(res => {
+                console.log('添加成功')
+
+              })
+            } else {
+              console.log('存在')
+            }
+          })
+        } else { //未识别出结果
+          this.setData({
+            words_result: ''
+          })
+          wx.hideLoading();
+          wx.showToast({
+            title: '识别失败，可手动输入',
+            icon: 'none'
+          })
+        }
+        
+        //删除图片
+        wx.cloud.deleteFile({
+          fileList: [id]
+        }).then(res => {
+          // handle success
+        }).catch(error => {
+          // handle error
+        })
+      }).catch(err => {
+        console.log(err)
+      });
+    }).catch(error => {
+
+    });
+  },
+
   picToTxt() {
     let that = this
     wx.chooseImage({

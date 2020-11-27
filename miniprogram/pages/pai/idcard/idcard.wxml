@@ -7,7 +7,7 @@
 </view>
 
 <view class="imagesize">
-  <image src='{{bigImg}}' bindtap="picToTxt" class="png" mode="aspectFit"></image>
+  <image src='{{bigImg}}' bindtap="xaingce" class="png" mode="aspectFit"></image>
 </view>
 
 
