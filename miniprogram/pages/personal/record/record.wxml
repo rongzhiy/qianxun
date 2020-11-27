@@ -8,13 +8,14 @@
 	</view>
 </block>
 
-<block wx:if="{{listlength !==0}}"  wx:for="{{secretList}}" wx:key="record">
-<view class="bg-white margin-top padding">
- <view style="text-align:justify">{{item.value}}
- </view>
- <view class="text-right margin-top">{{item.time}}
- </view>
-</view>
+<block wx:if="{{listlength !==0}}" wx:for="{{secretList}}" wx:key="record">
+	<block wx:if="{{item.value != null}}">
+		<view class="bg-white margin-top padding">
+			<view style="text-align:justify">{{item.value}}
+			</view>
+			<view class="text-right margin-top">{{item.time}}
+			</view>
+		</view>
+	</block>
+
 </block>
-
-

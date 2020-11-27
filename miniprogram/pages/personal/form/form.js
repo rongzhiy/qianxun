@@ -7,7 +7,7 @@ Page({
     picker: ['云南大学', '云昆工', '云师大','云民大'],
     region: ['云南省', '昆明市', '呈贡区'],
     modalName: null,
-    textareaBValue: null,
+    textareaBValue: null, 
     name:'',
     weixinhao:'',
     qqhao:'',

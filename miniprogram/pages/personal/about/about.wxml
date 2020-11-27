@@ -46,7 +46,7 @@
                               <view class="content  padding-left">
                                     3. 如果无法通过以上解决你的问题，您可以选择
                                     <button class="cu-btn " open-type="contact">
-                                          <text class="text-sm text-blue text-bold">联系我们</text>
+                                          <text class="text-sm text-blue text-bold" bindcontact="handleContact">联系我们</text>
                                     </button>
                               </view>
                         </view>

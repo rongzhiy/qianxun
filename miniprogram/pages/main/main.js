@@ -23,6 +23,15 @@ Page({
       name : '生活用品',image:"../../image/grid/life.png"
     }, {
       name : '其他',image:"../../image/grid/else.png"
+    },
+    {
+      name : '书籍',image:"../../image/grid/book.png"
+    },
+    {  
+      name : '电子设备',image:"../../image/grid/elec.png"
+    },
+    {
+      name : '寻人',image:"../../image/grid/xunren.png"
     },],
   },
   getitem(e){

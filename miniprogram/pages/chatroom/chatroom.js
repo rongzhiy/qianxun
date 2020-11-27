@@ -2,6 +2,7 @@
 const db = wx.cloud.database()
 const chatroomCollection = db.collection('chat_info')
 const _ = db.command
+const Encrypt = require('../../utils/jsencrypt.min.js')
 
 Page({
 
@@ -23,7 +24,6 @@ Page({
    */
   onLoad: function (options) {
     console.log('onLoad')
-
     if (options.getopenid && options.getnickname) {
       this.setData({
         receiveId: options.getopenid,
@@ -33,20 +33,35 @@ Page({
       console.log("options", options)
     }
     // 用户是否对小程序授权
-    wx.getSetting({
-      success: res => {
-        if (res.authSetting['scope.userInfo']) {
-          wx.getUserInfo({
-            success: res => {
-              this.setData({
-                userInfo: res.userInfo
-              })
-            }
-          })
-        }
-      }
-    })
-    
+    // wx.getSetting({
+    //   success: res => {
+    //     if (res.authSetting['scope.userInfo']) {
+    //       wx.getUserInfo({
+    //         success: res => {
+    //           that.setData({
+    //             userInfo: res.userInfo
+    //           })
+    //           console.log("这是chatroom里面的userinfo",res)
+    //         }
+    //       })
+    //     }
+
+    //   }
+    // })
+
+    const uinfo = wx.getStorageSync('userInfo')
+    if (uinfo && uinfo != null) {      
+      this.setData({
+        userInfo: uinfo
+      })
+      // console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',uinfo)
+    }
+    else { 
+      wx.navigateTo({
+        url: '../../pages/personal/personal',
+      })
+    }
+
     wx.setNavigationBarTitle({
       title: this.data.receiveName,
     })
@@ -78,15 +93,14 @@ Page({
   async onReady() {
     console.log('onready')
     chatroomCollection.where(_.or([{
-          _openid: wx.getStorageSync('openid'),
-          receiveId: this.data.args.getopenid
-        },
-        {
-          _openid: this.data.args.getopenid,
-          receiveId: wx.getStorageSync('openid')
-        }
-      ])
-    ).watch({ //监听数据库变化
+        _openid: wx.getStorageSync('openid'),
+        receiveId: this.data.args.getopenid
+      },
+      {
+        _openid: this.data.args.getopenid,
+        receiveId: wx.getStorageSync('openid')
+      }
+    ])).watch({ //监听数据库变化
       onChange: this.onChange.bind(this), //回调函数
       onError(err) {
         console.error(err)
@@ -106,11 +120,24 @@ Page({
     })
   },
 
+  onDecrypt: function (arg) {
+    var privateKey = 'MIICXAIBAAKBgQCS1/LnFzny4VdxqNsY4DFuoqLPK3e0k2issswimlJ8VW4nwo6nM37oqKL/V68Izd5m8qdjTo5aJ6icB/2zTFQGtcurLo4i7EDWU5bbiM8OfVXCY0kbtO65iRXUYMAfW2XVFicZTPS7xjmz03qE2KwSK5qos6/9Zf3wYKYnEjM73wIDAQABAoGAROFKHe8trgnY4EZSG72SQnDEiQQ9PvWEfLnT+olEFvFl3f2rt692oMD10Gu7fZg/8i9xqCoBqTWAKEyxSykLIm+O2X/RS9VUHefKllXel0oEmHJ3zngF67wnfQOecxVosfmlGE2zdkT4kfy87JYoLIKZhTVdkSpVsbjyQtJqC7kCQQCgzpUtMuRR1P+4LhtWEb0BAu0wg+TUTKQt+APoh2VsNYTVOlEC8AgaJDZ4WBgO4zzIFiPiD0zArPxx4kWSGmJ5AkEA6cVJevooNaJE45Reg0Rhe1vJAI2roWlhGR5+6+/OCLB7q57Zj+Rqlh8ZlwSvSn8Vch+0F0SxEB4d/EOhgZa7FwJBAI7EemsjmNQSYGrb/IcgvoYMXBtLrjjSRp1NaeLjeqdkqKdK3CvYgcj7x6R2yf1FwGwARCFq5gDWVFajxpKdfDkCQGOOF1r+Cf29W2UoHI/+oR0t244Wx074V9eguyCzgaUFs8VE4xZ6ikHggL9lyVkKghGWGtYF9PoOOWrjSnarwIUCQHupOYw+KtqRXT3Bo1wsJBO8ZYKTzPHUokXvZ8ZRTXlAaQtCwnCetfYb67knT4Esqnt4/v9n1/kWVxmlNiCWM4w='
+    // 解密
+    const decryptor = new Encrypt.JSEncrypt();
+    decryptor.setPrivateKey(privateKey)
+
+    arg.forEach(element => {
+      if (element.textContent && element.textContent != null)
+        element.textContent = decryptor.decrypt(element.textContent)
+    });
+  },
+
   onChange(snapshot) {
     console.log('onChange')
     // 监听
     console.log("snapshot", snapshot)
     if (snapshot.type == 'init') { // 初始化
+      this.onDecrypt(snapshot.docs)
       this.setData({
         chats: [ //聊天对话的数据来源
           ...this.data.chats,
@@ -123,6 +150,7 @@ Page({
       for (const docChange of snapshot.docChanges) {
         switch (docChange.queueType) {
           case 'enqueue': //新插入的数据
+            this.onDecrypt([docChange.doc])
             chats.push(docChange.doc) //加入数组
             break
         }
@@ -158,8 +186,16 @@ Page({
       return
     }
 
+
+    var publicKey = 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCS1/LnFzny4VdxqNsY4DFuoqLPK3e0k2issswimlJ8VW4nwo6nM37oqKL/V68Izd5m8qdjTo5aJ6icB/2zTFQGtcurLo4i7EDWU5bbiM8OfVXCY0kbtO65iRXUYMAfW2XVFicZTPS7xjmz03qE2KwSK5qos6/9Zf3wYKYnEjM73wIDAQAB'
+
+    // 加密        
+    let encryptor = new Encrypt.JSEncrypt()
+    encryptor.setPublicKey(publicKey) // 设置公钥
+    var mi = encryptor.encrypt(this.data.textInputValue) // 对需要加密的数据进行加密
+
     const doc = {
-      textContent: this.data.textInputValue, // 用户输入信息
+      textContent: mi, // 用户输入信息
       avatar: this.data.userInfo.avatarUrl, // 头像
       nickName: this.data.userInfo.nickName, //  昵称
       msgMark: this.data.userInfo.nickName + '_to_' + this.data.receiveName, //发送者nickName+接受者nickName
@@ -245,10 +281,7 @@ Page({
 
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
 
-  }
+
+
 })

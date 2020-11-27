@@ -1,4 +1,5 @@
 {
   "usingComponents": {},
+  "enablePullDownRefresh": false,
   "navigationBarTitleText": "公告与简介"
 }

@@ -7,31 +7,37 @@
 </view>
 
 <view class="imagesize">
-  <image src='{{bigImg}}' bindtap="idcard" class="png" mode="aspectFit"></image>
+  <image src='{{bigImg}}' bindtap="picToTxt" class="png" mode="aspectFit"></image>
 </view>
 
 
-<view class="cu-form-group margin-top">
-  <view class="title">身份证号：</view>
-  <text class="padding">{{idcardId}}</text>
-</view>
-<view class="cu-form-group">
-  <view class="title">姓名：</view>
-  <text class="padding">{{idcardName}}</text>
-</view>
-<view class="cu-form-group">
-  <view class="title">性别：</view>
-  <text class="padding">{{idcardGender}}</text>
-</view>
-<view class="cu-form-group">
-  <view class="title">出生日期：</view>
-  <text class="padding">{{idcardBirth}}</text>
-</view>
-<view class="cu-form-group">
-  <view class="title">家庭住址：</view>
-  <text class="padding">{{idcardAddr}}</text>
-</view>
 
-<view class="padding flex flex-direction">
-  <button bindtap="searchOwner" class="cu-btn bg-blue margin-tb-sm lg">查找失主</button>
-</view>
+<form bindsubmit="searchOwner">
+
+
+  <view class="cu-form-group margin-top">
+    <view class="title">身份证号：</view>
+    <input name="idcardId" value="{{idcardId}}" placeholder="可手动输入"></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">姓名：</view>
+    <input name="idcardName" value="{{idcardName}}" placeholder="可手动输入"></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">性别：</view>
+    <input name="idcardGender" value="{{idcardGender}}"></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">出生日期：</view>
+    <input name="idcardBirth" value="{{idcardBirth}}"></input>
+  </view>
+  <view class="cu-form-group">
+    <view class="title">家庭住址：</view>
+    <input name="idcardAddr" value="{{idcardAddr}}"></input>
+  </view>
+
+  <view class="padding flex flex-direction">
+    <button formType="submit" class="cu-btn bg-blue margin-tb-sm lg">查找失主</button>
+  </view>
+
+</form>

@@ -8,6 +8,7 @@
     "pages/pai/idcard/idcard",
     "pages/pai/bankcard/bankcard",
     "pages/pai/carcard/carcard",
+    "pages/pai/else/else",
     "pages/pai/studentcard/studentcard",
     "pages/message/message",
     "pages/chatroom/chatroom",
@@ -23,42 +24,48 @@
     "pages/personal/userAgreement/userAgreement",
     "components/navbar/navbar",
     "components/grid/grid"
-  
+
+
   ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+
   "window": {
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F6F6F6",
     "navigationBarTitleText": "云大千寻",
     "navigationBarTextStyle": "black",
-    "enablePullDownRefresh":true,
-    "onReachBottomDistance":30
+    "enablePullDownRefresh": true,
+    "onReachBottomDistance": 30
   },
   "tabBar": {
-    "color":"#cdcdcd",
+    "color": "#cdcdcd",
     "selectedColor": "#1296db",
-    "list": [
-      {
+    "list": [{
         "pagePath": "pages/main/main",
-        "text":"发现",
+        "text": "发现",
         "iconPath": "image/tab/shouye.png",
         "selectedIconPath": "image/tab/shouyeactive.png"
       },
       {
         "pagePath": "pages/pai/pai",
-        "text":"拍一拍",
+        "text": "拍一拍",
         "iconPath": "image/tab/photo.png",
         "selectedIconPath": "image/tab/photoactive.png"
       },
       {
         "pagePath": "pages/message/message",
-        "text":"消息",
+        "text": "消息",
         "iconPath": "image/tab/massage.png",
         "selectedIconPath": "image/tab/massageactive.png"
       },
       {
         "pagePath": "pages/personal/personal",
-        "text":"个人中心",
+        "text": "个人中心",
         "iconPath": "image/tab/personal.png",
         "selectedIconPath": "image/tab/personalactive.png"
       }

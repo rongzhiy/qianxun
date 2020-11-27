@@ -1,4 +1,5 @@
 {
   "usingComponents": {},
+  "enablePullDownRefresh": false,
   "navigationBarTitleText": "失物列表"
 }

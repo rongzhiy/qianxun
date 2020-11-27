@@ -2,19 +2,19 @@
 	<!-- 基本信息 -->
 	<view class="cu-form-group">
 		<view class="title">我的姓名：</view>
-		<input name="name" placeholder="如：杨泽"></input>
+		<input name="name" placeholder="如：张三"></input>
 	</view>
 	<view class="cu-form-group">
 		<view class="title">我的微信号：</view>
-		<input name="weixinhao" placeholder="如：aze2735"></input>
+		<input name="weixinhao" placeholder="如：123456"></input>
 	</view>
 	<view class="cu-form-group">
 		<view class="title">我的QQ号：</view>
-		<input name="qqhao"  placeholder="如：2735545128"></input>
+		<input name="qqhao"  placeholder="如：12345678"></input>
 	</view>
 	<view class="cu-form-group">
 		<view class="title">手机号码</view>
-		<input name="phonenumber" placeholder="输入你常用的手机号"></input>
+		<input name="phonenumber" placeholder="如：13878537834"></input>
 		<view class="cu-capsule radius">
 			<view class="cu-tag bg-blue">
 				+86
@@ -45,7 +45,7 @@
 
 	<view class="cu-form-group">
 		<view class="title">我的学号：</view>
-		<input name="xuehao" placeholder="如：20171060112"></input>
+		<input name="xuehao" placeholder="请输入11位数字"></input>
 	</view>
 
 	<view class="cu-form-group">
@@ -62,11 +62,11 @@
 	<view class="cu-form-group align-start">
 		<view class="title">备注</view>
 		<textarea maxlength="-1" name="beizhu" disabled="{{modalName!=null}}" bindinput="textareaInput"
-			placeholder="其他为了能准备匹配你的失物的信息"></textarea>
+			placeholder="其他为了能准确匹配你的失物的信息"></textarea>
 	</view>
 	<view class="padding flex flex-direction">
 		<button formType="submit" class="cu-btn bg-blue margin-tb-sm lg">保存</button>
 	</view>
 
-</form>
+</form> 
 

@@ -11,8 +11,8 @@
 </view> -->
 
 <!-- 消息列表 -->
-<block wx:if="{{mesLength !=0}}">
-	<view class="uploader margin-top">
+<!-- <block wx:if="{{mesLength !=0}}"> -->
+	<view class="uploader">
 		<scroll-view scroll-y>
 			<view class="_div data-v-0c62411e chat-container">
 				<!-- <view wx:if="{{userList.length === 0}}" class="_div data-v-0c62411e empty">暂时还没有消息</view> -->
@@ -69,10 +69,10 @@
 		</scroll-view>
 	</view>
 
-</block>
+<!-- </block> -->
 <!--  没有消息的时候 -->
-<block wx:else>
-	<view class="fix-bottom text-center full margin-top">
+<!-- <block wx:else>
+	<view class="fix-bottom text-center full">
 		<view class="cu-btn text-sm text-lg">还未与其他用户建立通话哦~</view>
 	</view>
-</block>
+</block> -->

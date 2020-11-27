@@ -28,7 +28,7 @@ Component({
     {
       title: '其他',
       img: 'https://786c-xly-zjauh-1301501296.tcb.qcloud.la/pai/bg17.png',
-      url: '/indexes/indexes'
+      url: '/else/else'
   }
     ]
   },

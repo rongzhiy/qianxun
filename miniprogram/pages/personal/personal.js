@@ -1,72 +1,60 @@
 // pages/personal/personal.js
-
 const util = require('../../utils/util.js');
 const app = getApp();
 const db = wx.cloud.database();
 
-
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     nickName: "",
-    avatarUrl: "",
-
-
+    avatarUrl: "", 
+    openid:''
   },
 
   getuserinfo(e) {
-    const nickName = e.detail.userInfo.nickName
-    const avatarUrl = e.detail.userInfo.avatarUrl
-
+    let that=this;
+    that.setData({
+       nickName : e.detail.userInfo.nickName,
+       avatarUrl : e.detail.userInfo.avatarUrl
+    })
+   
     wx.cloud.callFunction({
       name: 'getopenid',
-      complete: res => {
+      success: res => {
         // console.log(res.result.openid)
-        const openid = res.result.openid
-        wx.setStorageSync('openid', openid)
-         
-        this.setData({
-          nickName: nickName,
-          avatarUrl: avatarUrl,
-          openid : openid
+        that.setData({
+          openid:res.result.openid
         })
+        wx.setStorageSync('openid', that.data.openid)    
+        console.log(that.data.openid,"授权成功登录")
 
+        //查看数据库users里面是否有该用户openid,没有的话写入数据库
         db.collection('users').where({
-          _openid: openid
+          _openid: that.data.openid
         }).get().then(res => {
           if (res.data == '') {
-            db.collection('uses').add({
+            db.collection('users').add({
               data: {
-                nickName: nickName,
-                avatarUrl: avatarUrl,
+                nickName: that.data.nickName,
+                avatarUrl: that.data.avatarUrl,
                 time: util.formatTime(new Date())
               }
+              
             }).then(res => {
-              console.log('添加成功')
+              console.log('添加成功',res)
+            }).catch(err => {
+             console.log("添加失败",err)
             })
           } else {
             console.log('存在')
           }
         })
+      },
+      fail: err=>{
+           console.log("获取用户信息错误".err)
       }
     })
 
-   
-
-
     wx.setStorageSync('userInfo', e.detail.userInfo)
-    //连接数据库，保存用户信息
-    // db.collection('user').add({
-    //   data:{
-    //     nickName :nickName,
-    //     avatarUrl:avatarUrl
-    //   }
-    // }).then(res=>{
-    //   console.log('添加成功')
-    // })
   },
   showqq(e) {
     wx.previewImage({
@@ -80,43 +68,60 @@ Page({
       current: 'https://786c-xly-zjauh-1301501296.tcb.qcloud.la/else/yjtp.png' // 当前显示图片的http链接      
     })
   },
-
+  //跳转到云大微校园
+  tiao:function(){
+    wx.navigateToMiniProgram({
+      appId: 'wx0bb4e16473531e8d',
+      path: 'pages/index/index',
+      extraData: {
+      foo: 'bar'
+      },
+      envVersion: 'release',
+      success(res) {
+      // 打开成功
+      }
+      })
+  },
 
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // db.collection('users').where({
-    //   _openid: this.data.openid
-    // }).get().then(res => {
-    //   if (res.data == '') {
-    //     this.getuserinfo()
 
-    //   } else {
-    //     wx.cloud.callFunction({
-    //       name: 'getopenid',
-    //       complete: res => {
-    //         const openid = res.result.openid
-    //         wx.setStorageSync('openid', openid)
-    //       }
-    //     })
-    //   }
-    // })
+    
+    let that = this
     wx.cloud.callFunction({
       name: 'getopenid',
-      complete: res => {
-        const openid = res.result.openid
-        wx.setStorageSync('openid', openid)
+      success: res => {
+        // console.log(res.result.openid)
+        that.setData({
+          openid:res.result.openid
+        })
+        wx.setStorageSync('openid', that.data.openid)    
+        console.log(that.data.openid,"onload")
+        //查看数据库users里面是否有该用户openid,有的话获取userInfo
+        db.collection('users').where({
+          _openid: that.data.openid
+        }).get().then(res => {
+          if (res.data != '') {
+            console.log(res)
+          that.setData({
+            nickName:res.data[0].nickName,
+            avatarUrl:res.data[0].avatarUrl
+          })
+          wx.setStorageSync("userInfo",res.data[0]) 
+          } else {
+            // console.log('')
+          }
+        })
+      },
+      fail: err=>{
+           console.log("获取用户信息错误".err)
       }
     })
 
-    if (app.globalData.userInfo) {
-      this.setData({
-        nickName: app.globalData.userInfo.nickName,
-        avatarUrl: app.globalData.userInfo.avatarUrl
-      })
-    }
+
     wx.setNavigationBarTitle({
       title: '个人中心'
     })
@@ -126,6 +131,7 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+   
 
   },
 

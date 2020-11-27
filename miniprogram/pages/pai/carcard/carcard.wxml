@@ -7,7 +7,7 @@
 </view>
 
 <view class="imagesize">
-  <image src='{{bigImg}}' bindtap="carcard" class="png" mode="widthFix"></image>
+  <image src='{{bigImg}}' bindtap="picToTxt" class="png" mode="widthFix"></image>
 </view>
 
 <view class="cu-form-group margin-top">
@@ -15,7 +15,7 @@
   <text class="padding">{{carcardName}}</text>
 </view>
 <view class="cu-form-group">
-  <view class="title">号牌号码：</view>
+  <view class="title">证件号码：</view>
   <text class="padding">{{carcardId}}</text>
 </view>
 
@@ -24,8 +24,8 @@
   <text class="padding">{{carcardAddr}}</text>
 </view>
 <view class="cu-form-group">
-  <view class="title">发证机关：</view>
-  <text class="padding">{{carcardJiguan}}</text>
+  <view class="title">准驾车型：</view>
+  <text class="padding">{{carcardType}}</text>
 </view>
 <view class="cu-form-group">
   <view class="title">所有人生日：</view>

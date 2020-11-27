@@ -32,6 +32,16 @@ exports.main = async (event, context) => {
             tag: 'carcard'
          }).get()
       }
+      else if (event.shyp){
+         return await db.collection('found').where({
+            tag: '生活用品'
+         }).get()
+      }
+      else if (event.else){
+         return await db.collection('found').where({
+            tag: '其他'
+         }).get()
+      }
    } catch (err) {
       console.log('err', err)
    }

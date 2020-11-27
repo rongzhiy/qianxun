@@ -9,4 +9,5 @@
       <image src="{{item.image}}" mode="aspectFill"></image>   
     </navigator>
   </swiper-item>
-</swiper>
+</swiper> 
+

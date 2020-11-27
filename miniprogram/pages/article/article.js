@@ -15,6 +15,16 @@ Page({
 
   },
 
+  //调用客服消息
+  handleContact() {
+    wx.cloud.callFunction({
+      name: 'kefumsg' // 名字和云函数名字对应
+    }).then(res => {
+      console.log(res)
+    }).catch(err => {
+      console.error(err)
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */

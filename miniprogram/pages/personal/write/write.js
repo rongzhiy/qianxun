@@ -1,7 +1,8 @@
 // pages/personal/write/write.js
-
 const util =  require('../../../utils/util.js');
 const db = wx.cloud.database();
+const Encrypt = require('../../../utils/jsencrypt.min.js')
+
 Page({
 
   /**
@@ -12,13 +13,20 @@ Page({
     value:''
   },
 
+ onEncrypt: function (args) {
+  var publicKey = 'MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDRqZTEYAUAWJ2gW0pI+Qw0duWo/T3vV56PJIqac5SeMte7oQ/pn1PBeDqH1CH+pG4jYzfzYbN4B8Chd6Yl6cyAlfUkI7Y4BPjECGLWKQ8u6sWjCipMPREuPkEVxGDvkgqWjbidy3C3c5XUNzU8I+luxxY8dIO87XPAYh1RLogNVwIDAQAB'
+  let encryptor = new Encrypt.JSEncrypt()
+  encryptor.setPublicKey(publicKey) // 设置公钥
+  return encryptor.encrypt(args) // 对需要加密的数据进行加密
+ },
+
   textareaInput(e){
     const value = e.detail.value
     const cursor = e.detail.curcor
     if(cursor !== 0){
       this.setData({
         disabled:false,
-        value:value
+        value: this.onEncrypt(value)
       })
     }else{
       this.setData({

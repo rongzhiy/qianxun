@@ -2,6 +2,7 @@
   "usingComponents": {
     "ocr-navigator": "plugin://ocr-plugin/ocr-navigator"
   },
+  "enablePullDownRefresh": false,
   "navigationBarTitleText": "驾驶证"
   
 }

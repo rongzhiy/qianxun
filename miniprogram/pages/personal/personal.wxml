@@ -34,6 +34,12 @@
 				<text class="text-grey">我的密码本</text>
 			</navigator>
 		</view>
+		<view class="cu-item arrow"  bindtap='tiao'>
+			<navigator class="content" hover-class="none">
+				<image src="../../image/icon/weixiaoyuan.png" class="png" mode="aspectFit"></image>
+				<text class="text-grey">云大微校园</text>
+			</navigator>
+		</view>
 		<view class="cu-item arrow">
 			<navigator class="content" url="./form/form" open-type="navigate" hover-class="none">
 				<text class="cuIcon-writefill text-cyan"></text>

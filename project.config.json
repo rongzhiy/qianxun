@@ -2,7 +2,7 @@
   "miniprogramRoot": "miniprogram/",
   "cloudfunctionRoot": "cloudfunctions/",
   "setting": {
-    "urlCheck": false,
+    "urlCheck": true,
     "es6": true,
     "enhance": true,
     "postcss": true,
@@ -14,7 +14,7 @@
     "autoAudits": false,
     "showShadowRootInWxmlPanel": true,
     "scopeDataCheck": false,
-    "uglifyFileName": false,
+    "uglifyFileName": true,
     "checkInvalidKey": true,
     "checkSiteMap": false,
     "uploadWithSourceMap": true,
@@ -224,6 +224,24 @@
         {
           "name": "pages/list/list",
           "pathName": "pages/list/list",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "其他",
+          "pathName": "pages/pai/else/else",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "导航",
+          "pathName": "pages/personal/map/map",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "文章",
+          "pathName": "pages/article/article",
           "scene": null
         }
       ]

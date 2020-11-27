@@ -10,52 +10,73 @@
 <!-- 失物列表  -->
 <view wx:if="{{length > 0}}">
    <view wx:for="{{lostList}}">
+      <!-- 校园卡 -->
       <block wx:if="{{item.studentcardID}}">
          <view>
             <navigator url="../chat_list/chat_list?founder={{item._openid}}">
                <view class="padding margin">
                   <view class="shadow-blur bg-orange ABox" style="animation: show 1s 1;-webkit-animation: show 1s 1;">
-                     校园卡号为<view class="text-blue">{{item.studentcardID}}</view>失主：{{item.studentcardName}}，请联系我哦~
+                     校园卡号为<view class="text-blue">{{item.studentcardID}}</view>失主：{{item.studentcardName}}，点击卡片，联系我哦~
                   </view>
                </view>
             </navigator>
          </view>
       </block>
+      <!-- 银行卡 -->
       <block wx:elif="{{item.bankcard}}">
          <view>
             <navigator url="../chat_list/chat_list?founder={{item._openid}}">
                <view class="padding margin">
                   <view class="shadow-blur bg-orange ABox">银行卡号为： <view class="text-blue">{{item.bankcard}}</view>
-                     的失主，请联系我哦~</view>
+                     的失主，点击卡片，联系我哦~</view>
                </view>
             </navigator>
          </view>
       </block>
+      <!-- 驾驶证 -->
       <block wx:elif="{{item.carcardId}}">
          <view>
             <navigator url="../chat_list/chat_list?founder={{item._openid}}">
                <view class="padding margin">
                   <view class="shadow-blur bg-blue Box" style="animation: show 1s 1;-webkit-animation: show 1s 1;">驾驶证号为
-                     <view>{{item.carcardId}}</view>失主： {{item.carcardName}}，请联系我哦~</view>
+                     <view>{{item.carcardId}}</view>失主： {{item.carcardName}}，点击卡片，联系我哦~</view>
                </view>
             </navigator>
          </view>
       </block>
+      <!-- 身份证 -->
       <block wx:elif="{{item.idcardId}}">
          <view>
             <navigator url="../chat_list/chat_list?founder={{item._openid}}">
                <view class="padding margin">
-                  <view class="shadow-blur bg-orange Box" style="animation: show 1s 1;-webkit-animation: show 1s 1;">身份证号为：
-                     <view class="text-blue">{{item.idcardId}}</view>失主： {{item.idcardName}}，请联系我哦~
+                  <view class="shadow-blur bg-orange Box" style="animation: show 1s 1;-webkit-animation: show 1s 1;">
+                     身份证号为：
+                     <view class="text-blue">{{item.idcardId}}</view>失主： {{item.idcardName}}，点击卡片，联系我哦~
                   </view>
                </view>
             </navigator>
          </view>
       </block>
+      <!-- 生活用品 & 其他 -->
+      <block wx:elif="{{item.describe}}">
+         <view>
+
+            <view class="padding margin">
+               <view class="shadow-blur bg-blue Box" style="animation: show 1s 1;-webkit-animation: show 1s 1;">
+                  <view class="text-lg">描述： {{item.describe}}</view>
+                  <image src="{{item.img}}"></image>
+                  拾取地址：<view> {{item.addr}}</view>拾取时间：<view>{{item.time}}</view>
+                  我的联系方式：{{item.phone}}，备注：{{item.remark}}.
+               </view>
+            </view>
+         </view>
+      </block>
+
+
    </view>
 
    <view class="fix-bottom text-center full margin-top">
-      <view class="cu-btn text-sm text-lg">失主可以点击卡片联系找回物品哦~</view>
+      <view class="cu-btn text-sm text-lg">失主可以根据卡片联系, 找回物品哦~</view>
    </view>
 </view>
 
