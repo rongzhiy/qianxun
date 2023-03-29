@@ -97,8 +97,10 @@
 
 ### Reference
 [1]  **colorUI项目链接:https://github.com/weilanwl/ColorUI↳**
+
 [2] **OCR插件地址链接:**
 **https://developers.weixin.qq.com/community/servicemarket/detail/0006eeb6160ce8429fb8cd3995b815**
+
 [3]  **百度OCR API地址链接:https://cloud.baidu.com/**
 
 
