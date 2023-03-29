@@ -31,11 +31,17 @@
 - 提供客服对话功能，给用户提供反馈的渠道，用户在使用过程中遇到了问题随时可以进行功能异常反馈、产品建议反馈以及进行违规举报。
 
 **程序截图如下：**
+
 ![1.png](https://cdn.nlark.com/yuque/0/2023/png/1143997/1680094328815-bf8835d9-b01c-4d10-9ffc-8a862dd742c7.png#averageHue=%23eeedec&clientId=ubeaf8f62-91ef-4&from=paste&height=523&id=yijwa&name=1.png&originHeight=523&originWidth=1206&originalType=binary&ratio=1&rotation=0&showTitle=false&size=335099&status=done&style=none&taskId=ud376569e-ccef-4f57-9927-7ba208286fc&title=&width=1206)
+
 首页“看一看”功能
+
 ![2.png](https://cdn.nlark.com/yuque/0/2023/png/1143997/1680094328639-f0374f4c-6331-4942-9813-9d61fec163ed.png#averageHue=%23f1e7df&clientId=ubeaf8f62-91ef-4&from=paste&height=524&id=H9qFW&name=2.png&originHeight=524&originWidth=1191&originalType=binary&ratio=1&rotation=0&showTitle=false&size=105643&status=done&style=none&taskId=uf58af47c-0889-4903-bc42-2bc90e98672&title=&width=1191)
+
 拍照识别提取物品信息 ->与失主建立对话
+
 ![3.png](https://cdn.nlark.com/yuque/0/2023/png/1143997/1680094328912-89f9f8b2-c38d-4a48-a52a-354ee80f82a6.png#averageHue=%23e3e1de&clientId=ubeaf8f62-91ef-4&from=paste&height=523&id=rPtlm&name=3.png&originHeight=523&originWidth=1333&originalType=binary&ratio=1&rotation=0&showTitle=false&size=441200&status=done&style=none&taskId=u921b0a84-e95c-471b-9dc7-95886003cc7&title=&width=1333)
+
 一些日志、工具箱功能
 
 ### 1.5 开发思路：
@@ -66,6 +72,7 @@
 ## 三、体验
 
 微信扫码即可体验云大千寻小程序：
+
 ![](https://mmbiz.qpic.cn/mmbiz_png/esicKz9LFmDZOXhxUyb8UR8ZnforCTHTm9KUnklnaR4xNdWibVxarar3LXicNZYNcspDKbAmTqo3s6KOnSE8HrSOg/640?wx_fmt=png#id=q1GKR&originHeight=520&originWidth=400&originalType=binary&ratio=1&rotation=0&showTitle=false&status=done&style=none&title=)
 ## 四、使用组件说明
 
