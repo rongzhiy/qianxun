@@ -1,9 +1,0 @@
-<!--miniprogram/components/navbar/navbar.wxml-->
-
-<scroll-view scroll-x class="bg-white nav">
-  <view class="flex text-center">
-    <view class="cu-item flex-sub {{index==TabCur?'text-orange cur':''}}" wx:for="{{navList}}" wx:key="navbar" bindtap="tabSelect" data-id="{{index}}">
-      {{item}}
-    </view>
-  </view>
-</scroll-view>
