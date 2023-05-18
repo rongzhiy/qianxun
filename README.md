@@ -1,6 +1,6 @@
 # 云大千寻
 
-[图片不能正常显示，点击查看原文](https://mp.weixin.qq.com/s/-F8loow3iFXslZPRfhcV_A)
+[原文](https://mp.weixin.qq.com/s/-F8loow3iFXslZPRfhcV_A)
 
 # 云大千寻
 
