@@ -1,6 +1,6 @@
 # 云大千寻
 
-[原文](https://mp.weixin.qq.com/s/-F8loow3iFXslZPRfhcV_A)
+[有个链接](https://mp.weixin.qq.com/s/-F8loow3iFXslZPRfhcV_A)
 
 # 云大千寻
 
